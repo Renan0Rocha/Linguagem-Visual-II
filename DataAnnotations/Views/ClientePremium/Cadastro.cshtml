@@ -1,0 +1,76 @@
+@model DataAnnotations.Models.ClientePremiumViewModel
+
+@{
+    ViewData["Title"] = "Cadastro de Cliente Premium";
+}
+
+<h2>Cadastro de Cliente Premium</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Cadastro" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="NomeCompleto" class="form-label"></label>
+                <input asp-for="NomeCompleto" class="form-control" />
+                <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DataNascimento" class="form-label"></label>
+                <input asp-for="DataNascimento" class="form-control" />
+                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Cpf" class="form-label"></label>
+                <input asp-for="Cpf" class="form-control" placeholder="000.000.000-00" />
+                <span asp-validation-for="Cpf" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="TelefoneCelular" class="form-label"></label>
+                <input asp-for="TelefoneCelular" class="form-control" placeholder="(00) 00000-0000" />
+                <span asp-validation-for="TelefoneCelular" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="UrlPerfilLinkedIn" class="form-label"></label>
+                <input asp-for="UrlPerfilLinkedIn" class="form-control" placeholder="https://linkedin.com/in/seu-perfil" />
+                <span asp-validation-for="UrlPerfilLinkedIn" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="RendaMensal" class="form-label"></label>
+                <input asp-for="RendaMensal" class="form-control" />
+                <span asp-validation-for="RendaMensal" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NumeroCartaoCredito" class="form-label"></label>
+                <input asp-for="NumeroCartaoCredito" class="form-control" />
+                <span asp-validation-for="NumeroCartaoCredito" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="SenhaAcesso" class="form-label"></label>
+                <input asp-for="SenhaAcesso" class="form-control" />
+                <span asp-validation-for="SenhaAcesso" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ConfirmarSenhaAcesso" class="form-label"></label>
+                <input asp-for="ConfirmarSenhaAcesso" class="form-control" />
+                <span asp-validation-for="ConfirmarSenhaAcesso" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

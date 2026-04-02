@@ -1,0 +1,34 @@
+@model List<CineTrends.Models.Movie>
+
+@{
+    ViewData["Title"] = "Filmes Populares";
+}
+
+<div class="container py-5 movies-page">
+    <div class="row mb-5 text-center">
+        <div class="col-12">
+            <h1 class="display-4 font-weight-bold cinetrends-title">
+                CineTrends: Filmes Populares
+            </h1>
+            <p class="lead text-muted">Os filmes mais populares da semana, direto do TMDB.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        @if (Model != null && Model.Count > 0)
+        {
+            @foreach (var movie in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    @await Html.PartialAsync("_MovieCard", movie)
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center alert alert-warning rounded-pill shadow-sm">
+                Nenhum filme encontrado. Verifique sua chave de API do TMDB e sua conexão.
+            </div>
+        }
+    </div>
+</div>

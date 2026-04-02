@@ -1,0 +1,11 @@
+@model CineTrends.Models.Movie
+
+<div class="card movie-card text-center mb-4">
+    <img src="@Model.PosterFullUrl" alt="@Model.Title" class="card-img-top movie-poster" />
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <span class="badge bg-warning text-dark movie-rating">
+            ⭐ @Model.VoteAverage.ToString("F1")
+        </span>
+    </div>
+</div>

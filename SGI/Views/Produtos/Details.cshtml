@@ -1,0 +1,46 @@
+@model SGI.Models.Produto
+
+@{
+    ViewData["Title"] = "Detalhes do Produto";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0"><i class="bi bi-eye me-2"></i>Detalhes do Produto</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">ID</dt>
+                    <dd class="col-sm-8 text-muted">#@Model.Id</dd>
+
+                    <dt class="col-sm-4">Nome</dt>
+                    <dd class="col-sm-8 fw-semibold">@Model.Nome</dd>
+
+                    <dt class="col-sm-4">Preço</dt>
+                    <dd class="col-sm-8 text-success fw-bold">@Model.Preco.ToString("C")</dd>
+
+                    <dt class="col-sm-4">Quantidade</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge @(Model.Quantidade > 0 ? "bg-success" : "bg-danger") fs-6">
+                            @Model.Quantidade unidades
+                        </span>
+                    </dd>
+                </dl>
+
+                <div class="d-flex gap-2 mt-3">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                        <i class="bi bi-pencil me-1"></i>Editar
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">
+                        <i class="bi bi-trash me-1"></i>Excluir
+                    </a>
+                    <a asp-action="Index" class="btn btn-outline-secondary ms-auto">
+                        <i class="bi bi-arrow-left me-1"></i>Voltar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

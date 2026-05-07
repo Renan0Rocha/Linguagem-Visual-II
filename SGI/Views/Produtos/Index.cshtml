@@ -1,0 +1,65 @@
+@model IEnumerable<SGI.Models.Produto>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0"><i class="bi bi-box-seam me-2 text-primary"></i>Gestão de Produtos</h2>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-lg me-1"></i>Novo Produto
+    </a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        <i class="bi bi-info-circle me-2"></i>Nenhum produto cadastrado. <a asp-action="Create">Cadastre o primeiro!</a>
+    </div>
+}
+else
+{
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th class="text-end">Preço</th>
+                        <th class="text-center">Quantidade</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var produto in Model)
+                    {
+                        <tr>
+                            <td class="align-middle fw-semibold">@produto.Nome</td>
+                            <td class="align-middle text-end">@produto.Preco.ToString("C")</td>
+                            <td class="align-middle text-center">
+                                <span class="badge @(produto.Quantidade > 0 ? "bg-success" : "bg-danger") fs-6">
+                                    @produto.Quantidade
+                                </span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <a asp-action="Details" asp-route-id="@produto.Id"
+                                   class="btn btn-sm btn-outline-info me-1" title="Detalhes">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@produto.Id"
+                                   class="btn btn-sm btn-outline-warning me-1" title="Editar">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@produto.Id"
+                                   class="btn btn-sm btn-outline-danger" title="Excluir">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <small class="text-muted mt-2 d-block">Total: @Model.Count() produto(s) cadastrado(s).</small>
+}
